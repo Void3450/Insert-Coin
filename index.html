@@ -1,162 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert Coin</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            height: 100vh;
-            background-color: #1e1e1e;
-            color: #f0f0f0;
-        }
-
-        /* Sidebar */
-        #sidebar {
-            width: 200px;
-            background-color: #111;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        #sidebar h1 {
-            font-size: 20px;
-            margin: 0;
-        }
-
-        #sidebar p {
-            font-size: 12px;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            color: #aaa;
-        }
-
-        #sidebar a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #f0f0f0;
-            padding: 10px;
-            margin-bottom: 5px;
-            border-left: 5px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        #sidebar a.active {
-            font-weight: bold;
-            border-left: 10px solid #f0f0f0;
-            background-color: #222;
-        }
-
-        #sidebar a:hover {
-            background-color: #222;
-            border-left: 10px solid #f0f0f0;
-        }
-
-        /* Content */
-        #content {
-            flex-grow: 1;
-            padding: 30px;
-            overflow-y: auto;
-        }
-
-        section {
-            display: none;
-        }
-
-        section.active {
-            display: block;
-        }
-
-        .games-list {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .game-card {
-            background-color: #222;
-            padding: 10px;
-            width: 150px;
-            text-align: center;
-            border-radius: 5px;
-        }
-
-    </style>
-</head>
-<body>
-
-<div id="sidebar">
-    <h1>Insert Coin</h1>
-    <p>Games guide & stuff</p>
-    <a href="#home" class="active">Home =></a>
-    <a href="#tips">Tips =></a>
-    <a href="#games">Games =></a>
-    <a href="#mods">Mods =></a>
-</div>
-
-<div id="content">
-    <section id="home" class="active">
-        <h1>About Insert Coin</h1>
-        <p>This website is used to provide guides, tips, and game recommendations to players.</p>
-
-        <h2>Recommended Games</h2>
-        <div class="games-list" id="gameList"></div>
-    </section>
-
-    <section id="tips">
-        <h1>Tips</h1>
-        <p>Add your game tips here.</p>
-    </section>
-
-    <section id="games">
-        <h1>Games</h1>
-        <p>Add guides or game info here.</p>
-    </section>
-
-    <section id="mods">
-        <h1>Mods</h1>
-        <p>Add mod info or download links here.</p>
-    </section>
-</div>
-
-<script>
-    // Handle sidebar navigation
-    const links = document.querySelectorAll('#sidebar a');
-    const sections = document.querySelectorAll('section');
-
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            links.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-
-            sections.forEach(sec => sec.classList.remove('active'));
-            const target = document.querySelector(this.getAttribute('href'));
-            target.classList.add('active');
-        });
-    });
-
-    // Random game recommendations
-    const games = ["Minecraft", "Stardew Valley", "Among Us", "Terraria", "Valheim"];
-    const gameList = document.getElementById('gameList');
-
-    function shuffle(array) {
-        return array.sort(() => Math.random() - 0.5);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert Coin</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #1a1a1a;
+        color: #fff;
     }
 
-    const randomGames = shuffle(games).slice(0, 3);
-    randomGames.forEach(game => {
-        const card = document.createElement('div');
-        card.classList.add('game-card');
-        card.textContent = game;
-        gameList.appendChild(card);
-    });
-</script>
+    #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100%;
+        background-color: #111;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 
-</body>
-</html>
+    #sidebar h1 {
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+
+    #sidebar p {
+        font-size: 16px;
+        color: #ccc;
+        margin-bottom: 20px;
+    }
+
+    #sidebar a {
+        display: block;
+        padding: 12px 10px;
+        margin-bottom: 10px;
+        background-color: #222;
+        color: #fff;
+        text-decoration: none;
+        border-left: 5px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    #sidebar a.active, #sidebar a:hover {
+        font-size: 18px;
+        border-left: 15px solid #ffcc00;
+        background-color: #333;
+    }
+
+    #content {
+        margin-left: 240px;
+        padding: 40px;
+    }
+
+    section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    section h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    section p {
+        font-size: 20px;
+        max-width: 600px;
+        line-height: 1.6;
+        color: #ddd;
+    }
+
+    .games-list {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .game-card {
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        width: 180px
