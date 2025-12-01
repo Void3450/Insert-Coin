@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tips & Tricks</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #111; color: #eee; margin: 0; padding: 0; }
+        header { background-color: #222; padding: 10px; text-align: center; }
+        nav button { margin: 5px; padding: 10px; cursor: pointer; }
+        section { padding: 20px; display: none; }
+        section.active { display: block; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Game Tips & Tricks</h1>
+        <nav>
+            <button onclick="showSection('home')">Home</button>
+            <button onclick="showSection('tips')">Tips</button>
+            <button onclick="showSection('games')">Games</button>
+            <button onclick="showSection('mods')">Mods</button>
+            <button onclick="showSection('request')">Request</button>
+        </nav>
+    </header>
+
+    <section id="home" class="active">
+        <h2>Welcome!</h2>
+        <p>This is the home page.</p>
+    </section>
+    <section id="tips">
+        <h2>Tips</h2>
+        <p>Here you can add tips for games.</p>
+    </section>
+    <section id="games">
+        <h2>Games</h2>
+        <p>List your games here.</p>
+    </section>
+    <section id="mods">
+        <h2>Mods</h2>
+        <p>Mods info goes here.</p>
+    </section>
+    <section id="request">
+        <h2>Request</h2>
+        <p>Add request form or notes here.</p>
+    </section>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+</html>
